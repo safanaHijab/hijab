@@ -2,8 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
-        "dev": "vite"
+        "build": "tailwindcss -i ./resources/css/app.css -o ./public/css/app.css",
+        "vercel-build": "npm run build && php artisan config:clear && php artisan migrate --force"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",

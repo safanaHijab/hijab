@@ -6,6 +6,10 @@
             "use": "@vercel/php"
         },
         {
+            "src": "package.json",
+            "use": "@vercel/node"
+        },
+        {
             "src": "public/**",
             "use": "@vercel/static"
         }
@@ -15,5 +19,9 @@
             "src": "/(.*)",
             "dest": "api/index.php"
         }
-    ]
+    ],
+    "scripts": {
+        "build": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css",
+        "vercel-build": "npm run build"
+    }
 }
