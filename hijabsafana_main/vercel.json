@@ -1,13 +1,8 @@
 {
-    "version": 2,
     "builds": [
         {
-            "src": "api/index.php",
+            "src": "composer.json",
             "use": "@vercel/php"
-        },
-        {
-            "src": "package.json",
-            "use": "@vercel/node"
         },
         {
             "src": "public/**",
@@ -17,9 +12,13 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "api/index.php"
+            "dest": "public/index.php"
         }
     ],
+    "env": {
+        "APP_ENV": "base64:fXO9WvMp9qncTRAuJyv+e+kl2gZDYICS86Y4Olaz2nI=",
+        "APP_DEBUG": "false"
+    },
     "scripts": {
         "build": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css",
         "vercel-build": "npm run build"
