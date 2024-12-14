@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "build": "tailwindcss -i ./resources/css/app.css -o ./public/css/app.css",
-        "vercel-build": "composer install && npm install && npm run build && php artisan config:clear"
+        "vercel-build": "composer install && npm install && npm run build && php artisan config:clear && php artisan migrate --force"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
