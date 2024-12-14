@@ -6,8 +6,20 @@
             "use": "@vercel/php"
         },
         {
+            "src": "install-composer.sh",
+            "use": "@vercel/bash"
+        },
+        {
+            "src": "api/index.php",
+            "use": "@vercel/php"
+        },
+        {
             "src": "public/**",
             "use": "@vercel/static"
+        },
+        {
+            "src": "package.json",
+            "use": "@vercel/node"
         }
     ],
     "routes": [
@@ -22,6 +34,6 @@
     },
     "scripts": {
         "build": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css",
-        "vercel-build": "npm run build"
+        "vercel-build": "composer install && npm install && npm run build && php artisan config:clear && php artisan migrate --force"
     }
 }
